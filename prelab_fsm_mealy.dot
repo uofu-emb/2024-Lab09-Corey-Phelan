@@ -1,0 +1,38 @@
+digraph {
+    idle[label="idle"];
+    idle -> nb_arriving[label="nb_approach / ringing, arms up"];
+    idle -> sb_arriving[label="sb_approach / ringing, arms up"];
+
+    nb_arriving[label="nb arriving"];
+    nb_arriving -> nb_closed[label="elapsed / ringing, arms down"];
+    nb_arriving -> both_arriving[label="sb_approach / ringing, arms up"];
+
+    sb_arriving[label="sb arriving"];
+    sb_arriving -> sb_closed[label="elapsed / ringing, arms down"];
+    sb_arriving -> both_arriving[label="nb_approach / ringing, arms up"];
+
+    both_arriving[label="both arriving"];
+    both_arriving -> both_closed[label="elapsed / ringing, arms down"];
+
+    nb_closed[label="nb closed"];
+    nb_closed -> nb_departing[label="nb_depart / ringing, arms up"];
+    nb_closed -> both_closed[label="sb_approach / ringing, arms down"];
+
+    sb_closed[label="sb closed"];
+    sb_closed -> sb_departing[label="sb_depart / ringing, arms up"];
+    sb_closed -> both_closed[label="nb_approach / ringing, arms down"];
+
+    both_closed[label="both closed"];
+    both_closed -> nb_closed[label="sb_depart / ringing, arms down"];
+    both_closed -> sb_closed[label="nb_depart / ringing, arms down"];
+
+    nb_departing[label="nb departing"];
+    nb_departing -> idle[label="elapsed / no ringing, arms up"];
+    nb_departing -> nb_arriving[label="nb_approach / ringing, arms up"];
+    nb_departing -> sb_arriving[label="sb_approach / ringing, arms up"];
+
+    sb_departing[label="sb departing"];
+    sb_departing -> idle[label="elapsed / no ringing, arms up"];
+    sb_departing -> sb_arriving[label="sb_approach / ringing, arms up"];
+    sb_departing -> nb_arriving[label="nb_approach / ringing, arms up"];
+}

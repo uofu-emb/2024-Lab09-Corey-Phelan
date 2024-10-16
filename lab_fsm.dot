@@ -1,0 +1,6 @@
+digraph {
+    zero[label="0"];
+    zero -> five[label="south_approach"];
+
+    five[label="5"];
+}
