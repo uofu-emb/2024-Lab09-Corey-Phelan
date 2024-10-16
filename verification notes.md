@@ -4,15 +4,22 @@
 
 ### From example:
 "An approach signal will always precede a depart signal"
+
 "The power will never be interrupted"
+
 "Trains on each track only run in one direction."
 
 ### Additional ones we find:
 "Only one train per line can exist between the arriving and departing sensors." (Environmental assumption, supporting a variable number trains per line in the critical zone would require an extended state machine or semaphore)
+
 "The train takes longer than 10 seconds to reach the intersection after passing the arriving sensor." (A violation of this assumption would result in the train crossing the intersection before the arms go down, creating a safety hazard)
+
 "The raising and lowering of the arms is instantaneous." (The scenario doesn't specify any length of time required by)
+
 "Timer event fires 10 seconds after train crosses approach signal (leading edge) or depart signal (falling edge)"
+
 "When a train is crossing the intersection, the arms are down." (Safety issue if violated)
+
 "Sensor is always reliable."
 
 ### Counterexample for example FSM

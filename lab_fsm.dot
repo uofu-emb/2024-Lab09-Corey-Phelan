@@ -1,6 +1,36 @@
 digraph {
-    zero[label="0"];
+    zero[label="0: ALARM OFF, ARMS UP, NONE PRESENT"];
+    zero -> six[label="north_approach"];
     zero -> five[label="south_approach"];
 
-    five[label="5"];
+    four[label="4: ALARM ON, ARMS UP, NONE PRESENT"];
+    four -> six[label="north_approach"];
+    four -> five[label="south_approach"];
+    four -> zero[label="ringing"];
+
+    five[label="5: ALARM ON, ARMS UP, SB PRESENT"];
+    five -> seven[label="north_approach"];
+    five -> thirteen[label="ringing"];
+
+    six[label="6: ALARM ON, ARMS UP, NB PRESENT"];
+    six -> seven[label="south_approach"];
+    six -> fourteen[label="ringing"];
+
+    seven[label="7: ALARM ON, ARMS UP, BOTH PRESENT"];
+    seven -> fifteen[label="ringing"];
+
+    thirteen[label="13: ALARM ON, ARMS DOWN, SB PRESENT"];
+    thirteen -> fifteen[label="north_approach"];
+    thirteen -> four[label="south_depart"];
+    thirteen -> thirteen[label="ringing"];
+
+    fourteen[label="14: ALARM ON, ARMS DOWN, NB PRESENT"];
+    fourteen -> fifteen[label="south_approach"];
+    fourteen -> four[label="north_depart"];
+    fourteen -> fourteen[label="ringing"];
+
+    fifteen[label="15: ALARM ON, ARMS DOWN, BOTH PRESENT"];
+    fifteen -> thirteen[label="north_depart"];
+    fifteen -> fourteen[label="south_depart"];
+    fifteen -> fifteen[label="ringing"];
 }
